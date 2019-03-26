@@ -13,6 +13,8 @@ function draw() {
     drawSquare(innerWidth/2, innerHeight/4, 200, 0, hexWithAlpha('#ffa000', 1), hexWithAlpha('#f72fe8', 1));
 
     drawNewTriangle((innerWidth/4)*3, innerHeight/4, 400, 200, 0, hexWithAlpha('#ffa000', 1), hexWithAlpha('#f72fe8', 1));
+
+    drawEqualTriangle(innerWidth/2, (innerHeight/4)*3, 200, 0, hexWithAlpha('#ffa000', 1), hexWithAlpha('#f72fe8', 1));
 }
 
 function gradientBackground(from, to) {
@@ -64,6 +66,30 @@ function drawTriangle(xCoord, yCoord, lengthSideA, lengthSideB, rotationAngle, f
     line(0, 0, lengthSideA, 0);
     stroke(0);
     line(0, 0, 0, lengthSideB);
+    fill(0);
+    ellipse(0, 0, 5, 5);
+
+    pop();
+}
+
+function drawEqualTriangle(xCoord, yCoord, sideLength, rotationAngle, from, to) {
+    push();
+    translate(xCoord, yCoord);
+    angleMode(DEGREES);
+    rotate(rotationAngle);
+    var lengthSideB = (sideLength*sqrt(3))/2;
+    for(var i = 0; i < lengthSideB; i++) {
+        noStroke();
+        rectMode(CENTER);
+        fill(lerpColor(color(from), color(to), i/lengthSideB));
+        rect(i, 0, 1, (map(i, 0, lengthSideB, sideLength, 0)));
+    }
+
+    // Draw axis
+    stroke(255);
+    line(0, 0, sideLength, 0);
+    stroke(0);
+    line(0, 0, 0, sideLength);
     fill(0);
     ellipse(0, 0, 5, 5);
 
