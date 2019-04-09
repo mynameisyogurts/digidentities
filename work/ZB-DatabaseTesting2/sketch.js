@@ -1,16 +1,15 @@
+// Database and reference variables for Firebase
 var database;
 var ref;
 
+// Form input variables
 var input1;
 var input2;
 var input3;
 var submitButton;
 
-
-    
-
 function setup() {
-    // Initialize Firebase
+    // Initialize Firebase config
     var config = {
         apiKey: "AIzaSyCLCtrfymafzgxNQCJpUVSEnmWiZAgbP84",
         authDomain: "digital-identities.firebaseapp.com",
@@ -20,9 +19,10 @@ function setup() {
         messagingSenderId: "834438338603"
     };
 
+    // Initialize firebase using config
     firebase.initializeApp(config);
 
-    // Create a database variable from firebase
+    // Create a database variable for firebase
     database = firebase.database();
 
     // Create inputs and buttons
@@ -34,39 +34,30 @@ function setup() {
     // When the submitButton is pressed, call the submitData function
     submitButton.mousePressed(submitData);
 
-    // Testing to see the firebase object
-    //console.log(firebase);
-
-    /*
-    // Reference a database section
-    ref = database.ref('test1');
-
-    // On the event of value, have two callbacks of 1) a function to receive the data, 2) a function if there's an error
-    ref.on('value', gotData, errData);
-    */
-
+    // Grab the button HTML elements from index.html and save as variable
     const btnLogin = document.getElementById('btnLogin');
     const btnLogout = document.getElementById('btnLogout');
 
     // Login event listener to log a user in anonymously
     btnLogin.addEventListener('click', e => {
         firebase.auth().signInAnonymously();
+        console.log("Anonymous user logged in.");
     });
 
     // Logout event listener to log a user out
     btnLogout.addEventListener('click', e => {
         firebase.auth().signOut();
+        console.log("Anonymous user logged out.");
     });
 
-    // Auth listener
+    // Log the current user when the authentication state has changed
     firebase.auth().onAuthStateChanged(firebaseUser => {
+        console.log("Current user:");
         console.log(firebaseUser);
     });
 }
 
-function draw() {
-
-}
+function draw() {}
 
 function submitData() {
     // Create a javascript object that contains the data
@@ -77,6 +68,7 @@ function submitData() {
     }
 
     // See what's being sent
+    console.log("Following data is being sent to the database:");
     console.log(data);
 
     // Create a reference to the database
@@ -84,24 +76,7 @@ function submitData() {
 
     // Push the data to the database
     ref.push(data);
-}
 
-function gotData(data) {
-    //console.log(data.val());
-    var results = data.val();
-    var keys = Object.keys(results);
-    //console.log(keys);
-
-    for (var i = 0; i < keys.length; i++) {
-        var k = keys[i];
-        var ans1 = results[k].question1;
-        var ans2 = results[k].question2;
-        var ans3 = results[k].question3;
-        //console.log(ans1, ans2, ans3);
-    }
-}
-
-function errData(err) {
-    console.log('Error!');
-    console.log(err);
+    // Confirm send
+    console.log("Data sent.");
 }
