@@ -1,4 +1,4 @@
-let input, input2, button, greeting, greeting2;
+let input, input2, input3, input4, button, greeting, greeting2, greeting3, greeting4;
 function setup(){
 	createCanvas(1400,800, WEBGL);
 
@@ -11,13 +11,24 @@ function setup(){
 	input2 = createInput();
 	input2.position(20, 200);
 
-	button2 = createButton('submit');
-	button2.position((input2.x + input2.width)/3, 250);
-	button2.mousePressed(greet);
+	button = createButton('submit');
+	button.position((input2.x + input2.width)/3, 450);
+	button.mousePressed(greet);
 
 	greeting2 = createElement('h2', 'what month where you born in?');
 	greeting2.position(20, 140);
-
+	
+	input3 = createInput();
+	input3.position(20, 300);
+	
+	greeting3 = createElement('h2', 'What it you favorite color?');
+	greeting3.position(20, 240);
+	
+	input4 = createInput();
+	input4.position(20, 400);
+	
+	greeting4 = createElement('h2', 'do you prefer cats or dogs?');
+	greeting4.position(20, 340);
 
 	textAlign(CENTER);
 	textSize(50);
@@ -56,6 +67,8 @@ function setup(){
 function greet(){
 	var name=input.value();
 	var color=input2.value();
+	var animal=input4.value();
+	var animalcolor=input3.value();
 	var namecount=name.length;
 	var nametwo="";
 	for (i=1; i<name.length; i++)
@@ -604,6 +617,18 @@ function greet(){
 	}
 	console.log(arraynametest);
 	console.log(arraynametesttwo);
+	if(animal=='cat'){
+						push();
+						ellipse(0, 0, 200, 200);
+						ellipse(40, 0, 50, 50);
+						ellipse(-40, 0, 50, 50);
+						triangle(-50, -85, -110, -105, -90, -45);
+						triangle(50, -85, 110, -105, 90, -45);
+						triangle(20, 20, 0, 40, -20, 20);
+						line(-70,40,-130,60);
+						line(-70,40,-130,80);
+						pop();
+			}
 	for(var b=0; b<arraynametest.length; b++)
 	{
 		if(color=='March'||color=='April'||color=='May')
@@ -713,6 +738,7 @@ function greet(){
 			push();
 			polygon(arraynotnametest[b], arraynotnametesttwo[b], arrayc[b], namecount);
 			pop();
+			
 		}
 	}
 	function polygon(x, y, radius, npoints) {
