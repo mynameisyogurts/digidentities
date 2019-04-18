@@ -1,6 +1,6 @@
-let name, month, day, live, pet, lead, pizza;
+let name, month, day, live, pet, lead, pizza, organized;
 
-let nInput, mInput, dInput,lInput, pInput, leaderInput;
+let nInput, mInput, dInput,lInput, pInput, leaderInput, pizzaInput, oInput;
 
 let submit;
 
@@ -91,10 +91,17 @@ function setup() {
 	pizza.style('color', 'white');
 	
 	pizzaInput=createInput();
-	pizzaInput.position(50,250)
+	pizzaInput.position(50,250);
+	
+	pizza=createElement('h3', 'Are you organized or messy');
+	pizza.position(450, 205);
+	pizza.style('color', 'white');
+	
+	oInput=createInput();
+	oInput.position(450,250);
     
     submit = createButton('submit');
-    submit.position(250, 250);
+    submit.position(650, 250);
     submit.mousePressed(show);
 }
 
@@ -139,6 +146,7 @@ function show() {
 }
 function pizzacircle(){
 	var pizzanumber=pizzaInput.value();
+	var organized=oInput.value();
 	let pizzadistance=pizzanumber*10;
 	var centerwidth=width/2;
 	var centerheight=height/2;
@@ -146,14 +154,29 @@ function pizzacircle(){
 	stroke(255, 255, 255);
 	for(var i=0; i<=pizzanumber; i++)
 		{
-	circle(centerwidth, centerheight-(i*pizzadistance), 100); //top
-    circle(centerwidth-(i*pizzadistance), centerheight, 100); //right
-    circle(centerwidth, centerheight+(i*pizzadistance), 100); //bottom
-    circle(centerwidth+(i*pizzadistance), centerheight, 100); //left
-	circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), 100); //left-bottom
-	circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), 100); //left-top
-	circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), 100); //right-bottom
-	circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), 100); //right-top
+			if(organized=="organized")
+				{
+				circle(centerwidth, centerheight-(i*pizzadistance), 100); //top
+				circle(centerwidth-(i*pizzadistance), centerheight, 100); //right
+    			circle(centerwidth, centerheight+(i*pizzadistance), 100); //bottom
+    			circle(centerwidth+(i*pizzadistance), centerheight, 100); //left
+				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), 100); //left-bottom
+				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), 100); //left-top
+				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), 100); //right-bottom
+				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), 100); //right-top
+				}
+			else if(organized=="messy")
+				{
+				console.log(nameleftTop[i]);
+				circle(centerwidth, centerheight-(i*pizzadistance), nameleftTop[i]); //top
+				circle(centerwidth-(i*pizzadistance), centerheight, nameleftBottom[i]); //right
+    			circle(centerwidth, centerheight+(i*pizzadistance), namerightTop[i]); //bottom
+    			circle(centerwidth+(i*pizzadistance), centerheight, namerightBottom[i]); //left
+				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftTop[i]); //left-bottom
+				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftBottom[i]); //left-top
+				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightTop[i]); //right-bottom
+				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightBottom[i]); //right-top
+				}
 		}
 }
 function leader(){
