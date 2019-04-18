@@ -150,6 +150,10 @@ function pizzacircle(){
     circle(centerwidth-(i*pizzadistance), centerheight, 100); //right
     circle(centerwidth, centerheight+(i*pizzadistance), 100); //bottom
     circle(centerwidth+(i*pizzadistance), centerheight, 100); //left
+	circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), 100); //left-bottom
+	circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), 100); //left-top
+	circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), 100); //right-bottom
+	circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), 100); //right-top
 		}
 }
 function leader(){
