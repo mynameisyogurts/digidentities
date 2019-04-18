@@ -1,4 +1,4 @@
-let name, month, day, live, pet, lead;
+let name, month, day, live, pet, lead, pizza;
 
 let nInput, mInput, dInput,lInput, pInput, leaderInput;
 
@@ -84,10 +84,17 @@ function setup() {
 	lead.style('color', 'white');
 	
 	leaderInput=createInput();
-	leaderInput.position(450,150)
+	leaderInput.position(450,150);
+	
+	pizza=createElement('h3', 'On a scale of 1 to 5 how much do you like pizza');
+	pizza.position(50, 205);
+	pizza.style('color', 'white');
+	
+	pizzaInput=createInput();
+	pizzaInput.position(50,250)
     
     submit = createButton('submit');
-    submit.position(650, 150);
+    submit.position(250, 250);
     submit.mousePressed(show);
 }
 
@@ -128,6 +135,22 @@ function show() {
 	leader();
 	mood();
 	nameshape();
+	pizzacircle();
+}
+function pizzacircle(){
+	var pizzanumber=pizzaInput.value();
+	let pizzadistance=pizzanumber*10;
+	var centerwidth=width/2;
+	var centerheight=height/2;
+	noFill();
+	stroke(255, 255, 255);
+	for(var i=0; i<=pizzanumber; i++)
+		{
+	circle(centerwidth, centerheight-(i*pizzadistance), 100); //top
+    circle(centerwidth-(i*pizzadistance), centerheight, 100); //right
+    circle(centerwidth, centerheight+(i*pizzadistance), 100); //bottom
+    circle(centerwidth+(i*pizzadistance), centerheight, 100); //left
+		}
 }
 function leader(){
 	let lead=leaderInput.value();
