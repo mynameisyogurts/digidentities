@@ -132,21 +132,28 @@ function show() {
         bgSquares((width/2), (height/2));
     } 
     if (vibe == "spontaneous") {
-        bgCircles((width/2), (height/2));
+        bgCircles((width/2)-300, (height/2)-300);
     }
-
-    element();
     
     shapes((width/2), (height/2));
     
-    squareRow((width/2), (height/2));
+    let livin = lInput.value();
+    if (livin == "city") {
+        squareRow((width/2), (height/2));
+    }
+    if (livin == "country") {
+        circleRow((width/2), (height/2));
+    }
+    if (livin == "suburbs") {
+        duoRow((width/2), (height/2));
+    }
     
     weird();
 }
 
 function weird() {
-    let curve = int(fInput.value());
-    let w = map(curve, 1, 5, 0, 100);
+    let lines = int(fInput.value());
+    //console.log(lines);
     
     let color = dInput.value();
     
@@ -157,56 +164,47 @@ function weird() {
     } else {
         stroke(0);
     }
-    circle(100, 100, w);
-    circle(width-100, 100, w);
-    circle(100, height-100, w);
-    circle(width-100, height-100, w);
-}
-
-function element() {
     
-    let symbol = yInput.value();
-    
-    let color = dInput.value();
-    
-    if (symbol == "methodical") {
-        fill(255);
-        if (color == "morning person") {
-            stroke(0);
-        } else {
-            stroke(255);
-        }
-        circle(100, (height/2)-100, 15);
-        circle(100, (height/2), 15);
-        circle(100, (height/2)+100, 15);
-        strokeWeight(2);
-        line(100, (height/2)-100, 100, (height/2)+100);
+    if (lines == 1) {
+        line(width-100, 0, width, 100);
         
-        circle(1100, (height/2)-100, 15);
-        circle(1100, (height/2), 15);
-        circle(1100, (height/2)+100, 15);
-        strokeWeight(2);
-        line(1100, (height/2)-100, 1100, (height/2)+100);
-    }
-    if (symbol == "spontaneous") {
-        fill(255);
-        if (color == "morning person") {
-            stroke(0);
-        } else {
-            stroke(255);
-        }
-        circle(100, (height/2), 25);
-        strokeWeight(2);
-        line(50, (height/2)-50, 150, (height/2)+50);
-        line(150, (height/2)-50, 50, (height/2)+50);
-        line(100, (height/2)-50, 100, (height/2)+50);
-        line(50, (height/2), 150, (height/2));
+        line(0, height-100, 100, height);
+    } else if (lines == 2) {
+        line(width-100, 0, width, 100);
+        line(width-125, 0, width, 125);
         
-        circle(1100, (height/2), 25);
-        line(1050, (height/2)-50, 1150, (height/2)+50);
-        line(1150, (height/2)-50, 1050, (height/2)+50);
-        line(1100, (height/2)-50, 1100, (height/2)+50);
-        line(1050, (height/2), 1150, (height/2));
+        line(0, height-100, 100, height);
+        line(0, height-125, 125, height);
+    } else if (lines == 3) {
+        line(width-100, 0, width, 100);
+        line(width-125, 0, width, 125);
+        line(width-150, 0, width, 150);
+        
+        line(0, height-100, 100, height);
+        line(0, height-125, 125, height);
+        line(0, height-150, 150, height);
+    } else if (lines == 4) {
+        line(width-100, 0, width, 100);
+        line(width-125, 0, width, 125);
+        line(width-150, 0, width, 150);
+        line(width-175, 0, width, 175);
+        
+        line(0, height-100, 100, height);
+        line(0, height-125, 125, height);
+        line(0, height-150, 150, height);
+        line(0, height-175, 175, height);
+    } else if (lines == 5) {
+        line(width-100, 0, width, 100);
+        line(width-125, 0, width, 125);
+        line(width-150, 0, width, 150);
+        line(width-175, 0, width, 175);
+        line(width-200, 0, width, 200);
+        
+        line(0, height-100, 100, height);
+        line(0, height-125, 125, height);
+        line(0, height-150, 150, height);
+        line(0, height-175, 175, height);
+        line(0, height-200, 200, height);
     }
 }
 
@@ -256,6 +254,104 @@ function squareRow(centerX, centerY) {
         drawSquare(centerX-100, centerY+pos, 100, 45, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 1));
         
         drawSquare(centerX, centerY, 150, 45, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 1));
+    }
+}
+
+function circleRow(centerX, centerY) {
+    let season = mInput.value();
+    
+    let scale = int(oInput.value());
+    
+    let pos = map(scale, 1, 5, 0, 200);
+    
+    
+    if (season=="september" || season=="october" || season=="november") {    
+        gradCircle(centerX-175, (centerY-25)+pos, 25, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+        gradCircle(centerX+125, (centerY-25)-pos, 25, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+        
+        gradCircle(centerX-150, (centerY-50)-pos, 50, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+        gradCircle(centerX+50, (centerY-50)+pos, 50, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+    }
+    
+    if (season=="december" || season=="january" || season=="february") {
+        gradCircle(centerX-175, (centerY-25)+pos, 25, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+        gradCircle(centerX+125, (centerY-25)-pos, 25, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+        
+        gradCircle(centerX-150, (centerY-50)-pos, 50, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+        gradCircle(centerX+50, (centerY-50)+pos, 50, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+    }
+    
+    if (season=="march" || season=="april" || season=="may") {
+        gradCircle(centerX-175, (centerY-25)+pos, 25, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+        gradCircle(centerX+125, (centerY-25)-pos, 25, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+        
+        gradCircle(centerX-150, (centerY-50)-pos, 50, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+        gradCircle(centerX+50, (centerY-50)+pos, 50, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+    }
+    
+    if (season=="june" || season=="july" || season=="august") {
+        gradCircle(centerX-175, (centerY-25)+pos, 25, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+        gradCircle(centerX+125, (centerY-25)-pos, 25, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+        
+        gradCircle(centerX-150, (centerY-50)-pos, 50, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+        gradCircle(centerX+50, (centerY-50)+pos, 50, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+    }
+}
+
+function duoRow(centerX, centerY) {
+    let season = mInput.value();
+    
+    let scale = int(oInput.value());
+    
+    let pos = map(scale, 1, 5, 0, 200);
+    
+    
+    if (season=="september" || season=="october" || season=="november") {    
+        gradCircle(centerX-200, (centerY-25)+pos, 25, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+        gradCircle(centerX+150, (centerY-25)-pos, 25, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+        
+        drawSquare(centerX+100, centerY+pos, 100, 45, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 1));
+        drawSquare(centerX-100, centerY-pos, 100, 45, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 1));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(fallR1, 1), hexWithAlpha(fallR2, 0.7));
+    }
+    
+    if (season=="december" || season=="january" || season=="february") {
+        gradCircle(centerX-200, (centerY-25)+pos, 25, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+        gradCircle(centerX+150, (centerY-25)-pos, 25, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+        
+        drawSquare(centerX+100, centerY+pos, 100, 45, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 1));
+        drawSquare(centerX-100, centerY-pos, 100, 45, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 1));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(winterP1, 1), hexWithAlpha(winterP2, 0.7));
+    }
+    
+    if (season=="march" || season=="april" || season=="may") {
+        gradCircle(centerX-200, (centerY-25)+pos, 25, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+        gradCircle(centerX+150, (centerY-25)-pos, 25, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+        
+        drawSquare(centerX+100, centerY+pos, 100, 45, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 1));
+        drawSquare(centerX-100, centerY-pos, 100, 45, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 1));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(springY1, 1), hexWithAlpha(springY2, 0.7));
+    }
+    
+    if (season=="june" || season=="july" || season=="august") {
+        gradCircle(centerX-200, (centerY-25)+pos, 25, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+        gradCircle(centerX+150, (centerY-25)-pos, 25, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
+        
+        drawSquare(centerX+100, centerY+pos, 100, 45, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 1));
+        drawSquare(centerX-100, centerY-pos, 100, 45, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 1));
+        
+        gradCircle(centerX-75, centerY-75, 75, hexWithAlpha(summerR1, 1), hexWithAlpha(summerB2, 0.7));
     }
 }
 
@@ -449,31 +545,31 @@ function bgCircles(centerX, centerY) {
         gradCircle(centerX, centerY, 300, hexWithAlpha(fallP1, 0.7), hexWithAlpha(fallP2, 0.7));
     }
     
-    if (season=="december" || season=="january" || season=="february") {
-        drawSquare(centerX-400, centerY+pos, 600, 45, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
-        drawSquare(centerX-200, centerY-pos, 600, 45, hexWithAlpha(winterB1, 0.7), hexWithAlpha(winterB2, 0.7));
+    if (season=="december" || season=="january" || season=="february") {        
+        gradCircle(centerX-400, centerY+pos, 300, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
+        gradCircle(centerX-200, centerY-pos, 300, hexWithAlpha(winterB1, 0.7), hexWithAlpha(winterB2, 0.7));
         
-        drawSquare(centerX+400, centerY-pos, 600, 45, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
-        drawSquare(centerX+200, centerY+pos, 600, 45, hexWithAlpha(winterB1, 0.7), hexWithAlpha(winterB2, 0.7));
-        drawSquare(centerX, centerY, 600, 45, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
+        gradCircle(centerX+400, centerY-pos, 300, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
+        gradCircle(centerX+200, centerY+pos, 300, hexWithAlpha(winterB1, 0.7), hexWithAlpha(winterB2, 0.7));
+        gradCircle(centerX, centerY, 300, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
     }
     
-    if (season=="march" || season=="april" || season=="may") {
-        drawSquare(centerX-400, centerY+pos, 600, 45, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
-        drawSquare(centerX-200, centerY-pos, 600, 45, hexWithAlpha(springO1, 0.7), hexWithAlpha(springO2, 0.7));
+    if (season=="march" || season=="april" || season=="may") {        
+        gradCircle(centerX-400, centerY+pos, 300, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
+        gradCircle(centerX-200, centerY-pos, 300, hexWithAlpha(springO1, 0.7), hexWithAlpha(springO2, 0.7));
         
-        drawSquare(centerX+400, centerY-pos, 600, 45, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
-        drawSquare(centerX+200, centerY+pos, 600, 45, hexWithAlpha(springO1, 0.7), hexWithAlpha(springO2, 0.7));
-        drawSquare(centerX, centerY, 600, 45, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
+        gradCircle(centerX+400, centerY-pos, 300, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
+        gradCircle(centerX+200, centerY+pos, 300, hexWithAlpha(springO1, 0.7), hexWithAlpha(springO2, 0.7));
+        gradCircle(centerX, centerY, 300, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
     }
     
-    if (season=="june" || season=="july" || season=="august") {
-        drawSquare(centerX-400, centerY+pos, 600, 45, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
-        drawSquare(centerX-200, centerY-pos, 600, 45, hexWithAlpha(summerB1, 0.7), hexWithAlpha(summerB2, 0.7));
+    if (season=="june" || season=="july" || season=="august") {        
+        gradCircle(centerX-400, centerY+pos, 300, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
+        gradCircle(centerX-200, centerY-pos, 300, hexWithAlpha(summerB1, 0.7), hexWithAlpha(summerB2, 0.7));
         
-        drawSquare(centerX+400, centerY-pos, 600, 45, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
-        drawSquare(centerX+200, centerY+pos, 600, 45, hexWithAlpha(summerB1, 0.7), hexWithAlpha(summerB2, 0.7));
-        drawSquare(centerX, centerY, 600, 45, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
+        gradCircle(centerX+400, centerY-pos, 300, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
+        gradCircle(centerX+200, centerY+pos, 300, hexWithAlpha(summerB1, 0.7), hexWithAlpha(summerB2, 0.7));
+        gradCircle(centerX, centerY, 300, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
     }
 }
 
@@ -520,13 +616,13 @@ function gradCircle(x, y, r, c1, c2) {
    noStroke();
    for (var i = 0; i <= lines; i++) {
      let inter = map(i, 0, r, 0, 0.8);
-     let c = lerpColor(c1, c2, inter);
+     let c = lerpColor(color(c1), color(c2), inter);
      fill(c);
      const s = i * lineW + lineW;
      const chordLength = Math.sqrt(2 * s * r - s * s) * 2;
      rect(i * lineW + x, r - chordLength / 2 + y, lineW, chordLength);
    }
-   stroke(255);
+   //stroke(255);
    noFill();
    ellipse(x + r + 20, y + r + 20, r * 2);
  }
