@@ -127,8 +127,14 @@ function show() {
     
     mood();
     
-    bgSquares((width/2), (height/2));
-    
+    let vibe = yInput.value();
+    if (vibe == "methodical") {
+        bgSquares((width/2), (height/2));
+    } 
+    if (vibe == "spontaneous") {
+        bgCircles((width/2), (height/2));
+    }
+
     element();
     
     shapes((width/2), (height/2));
@@ -427,6 +433,50 @@ function bgSquares(centerX, centerY) {
     }
 }
 
+function bgCircles(centerX, centerY) {
+    let season = mInput.value();
+    
+    let scale = int(oInput.value());
+    
+    let pos = map(scale, 1, 5, 0, 300);
+    
+    if (season=="september" || season=="october" || season=="november") {        
+        gradCircle(centerX-400, centerY+pos, 300, hexWithAlpha(fallP1, 0.7), hexWithAlpha(fallP2, 0.7));
+        gradCircle(centerX-200, centerY-pos, 300, hexWithAlpha(fallR1, 0.7), hexWithAlpha(fallR2, 0.7));
+        
+        gradCircle(centerX+400, centerY-pos, 300, hexWithAlpha(fallP1, 0.7), hexWithAlpha(fallP2, 0.7));
+        gradCircle(centerX+200, centerY+pos, 300, hexWithAlpha(fallR1, 0.7), hexWithAlpha(fallR2, 0.7));
+        gradCircle(centerX, centerY, 300, hexWithAlpha(fallP1, 0.7), hexWithAlpha(fallP2, 0.7));
+    }
+    
+    if (season=="december" || season=="january" || season=="february") {
+        drawSquare(centerX-400, centerY+pos, 600, 45, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
+        drawSquare(centerX-200, centerY-pos, 600, 45, hexWithAlpha(winterB1, 0.7), hexWithAlpha(winterB2, 0.7));
+        
+        drawSquare(centerX+400, centerY-pos, 600, 45, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
+        drawSquare(centerX+200, centerY+pos, 600, 45, hexWithAlpha(winterB1, 0.7), hexWithAlpha(winterB2, 0.7));
+        drawSquare(centerX, centerY, 600, 45, hexWithAlpha(winterP1, 0.7), hexWithAlpha(winterP2, 0.7));
+    }
+    
+    if (season=="march" || season=="april" || season=="may") {
+        drawSquare(centerX-400, centerY+pos, 600, 45, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
+        drawSquare(centerX-200, centerY-pos, 600, 45, hexWithAlpha(springO1, 0.7), hexWithAlpha(springO2, 0.7));
+        
+        drawSquare(centerX+400, centerY-pos, 600, 45, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
+        drawSquare(centerX+200, centerY+pos, 600, 45, hexWithAlpha(springO1, 0.7), hexWithAlpha(springO2, 0.7));
+        drawSquare(centerX, centerY, 600, 45, hexWithAlpha(springY1, 0.7), hexWithAlpha(springY2, 0.7));
+    }
+    
+    if (season=="june" || season=="july" || season=="august") {
+        drawSquare(centerX-400, centerY+pos, 600, 45, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
+        drawSquare(centerX-200, centerY-pos, 600, 45, hexWithAlpha(summerB1, 0.7), hexWithAlpha(summerB2, 0.7));
+        
+        drawSquare(centerX+400, centerY-pos, 600, 45, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
+        drawSquare(centerX+200, centerY+pos, 600, 45, hexWithAlpha(summerB1, 0.7), hexWithAlpha(summerB2, 0.7));
+        drawSquare(centerX, centerY, 600, 45, hexWithAlpha(summerR1, 0.7), hexWithAlpha(summerR2, 0.7));
+    }
+}
+
 function mood() {
     let time = dInput.value();
     
@@ -462,6 +512,24 @@ function drawSquare(xCoord, yCoord, size, rotationAngle, from, to) {
     }
 	pop();
 }
+
+function gradCircle(x, y, r, c1, c2) {
+   let lineW = 1;
+   let lines = (r * 2) / lineW;
+
+   noStroke();
+   for (var i = 0; i <= lines; i++) {
+     let inter = map(i, 0, r, 0, 0.8);
+     let c = lerpColor(c1, c2, inter);
+     fill(c);
+     const s = i * lineW + lineW;
+     const chordLength = Math.sqrt(2 * s * r - s * s) * 2;
+     rect(i * lineW + x, r - chordLength / 2 + y, lineW, chordLength);
+   }
+   stroke(255);
+   noFill();
+   ellipse(x + r + 20, y + r + 20, r * 2);
+ }
 
 function hexWithAlpha(hex, alpha) {
 	var r = parseInt(hex.slice(1, 3), 16),
