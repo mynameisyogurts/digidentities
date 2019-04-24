@@ -134,81 +134,81 @@ function show() {
     if (season=="september" || season=="october" || season=="november") {
         //background(hexWithAlpha('#ff3911'));
         
-        seasonColor = "#DC7700";
+        seasonColor = "#FEB313";
 		if(season=="september")
 			{
-				monthColor="#72F2E6";
-				monthColor2="#00FF5E";
+				monthColor="#FF3911";
+				monthColor2="#EB2734";
 			}
 		else if(season=="october")
 			{
-				monthColor="#1000E3";
-				monthColor2="#FFA000";
+				monthColor="#BE25F4";
+				monthColor2="#760CD8";
 			}
 		else if(season=="november")
 			{
-				monthColor="#00FF5E";
-				monthColor2="#08A7FE";
+				monthColor="#FF3911";
+				monthColor2="#BE25F4";
 			}
     }
     if (season=="december" || season=="january" || season=="february") {
         //background(hexWithAlpha('#745cfb'));
         
-        seasonColor = "#FFFE00";
+        seasonColor = "#2BE7D9";
 		if(season=="december")
 			{
-				monthColor="#08A7FE";
-				monthColor2="#1000E3";
+				monthColor="#1CA7FC";
+				monthColor2="#745CFB";
 			}
 		else if(season=="january")
 			{
-				monthColor="#7815A7";
-				monthColor2="#72F2E6";
+				monthColor="#166FFB";
+				monthColor2="#2E34DA";
 			}
 		else if(season=="february")
 			{
-				monthColor="#00FF5E";
-				monthColor2="#1000E3";
+				monthColor="#1CA7FC";
+				monthColor2="#166FFB";
 			}
     }
     if (season=="march" || season=="april" || season=="may") {
         //background(hexWithAlpha('#ae15ff'));
         
-        seasonColor = "#EF1DE0";
+        seasonColor = "#FFFB37";
 		if(season=="march")
 			{
-				monthColor="#FFA000";
-				monthColor2="#72F2E6";
+				monthColor="#FFAC06";
+				monthColor2="#FC5ACE";
 			}
 		else if(season=="april")
 			{
-				monthColor="#00FF5E";
-				monthColor2="#EB3574";
+				monthColor="#AE15FF";
+				monthColor2="#62F962";
 			}
 		else if(season=="may")
 			{
-				monthColor="#FFA000";
-				monthColor2="#00FF5E";
+				monthColor="#FFAC06";
+				monthColor2="#AE15FF";
 			}
     }
     if (season=="june" || season=="july" || season=="august") {
         //background(hexWithAlpha('#ff4e4e'));
         
-        seasonColor = "#FFA000";
+        seasonColor = "#4EF9C6";
 		if(season=="june")
 			{
-				monthColor="#F72FE8";
-				monthColor2="#FFFE00";
+				monthColor="#FBFF52";
+				monthColor2="#FF6724";
 			}
 		else if(season=="july")
 			{
-				monthColor="#72F2E6";
-				monthColor2="#F73B2F";
+				monthColor="#FF4E4E";
+				monthColor2="#0098FF";
 			}
 		else if(season=="august")
 			{
-				monthColor="#FFFE00";
-				monthColor2="#08A7FE";
+				monthColor="#FBFF52";
+				monthColor2="#FF4E4E";
 			}
     }
     proximity();
@@ -220,7 +220,6 @@ function show() {
 }
 function bigSquare(){
 	var cats=pInput.value();
-	var messy=oInput.value();
 	var introvalue=iInput.value();
 	var s=sInput.value();
 	var size;
@@ -260,62 +259,39 @@ function bigSquare(){
 		xpoint=100;
 	}
 	var halfxapoint=xpoint/2;
+	push();
+	for(var i = 0; i < size; i++){
 	if(s==5){
-		fill(lerpColor(color(247, 47, 232,180),color(114, 0, 238,200),size));
+		fill(lerpColor(color(247, 47, 232,180),color(114, 0, 238,200),i/size));
+		rectMode(CORNER);
 	}
 	else if(s==4){
-		fill(lerpColor(color(196, 182, 252,160),color(16, 0, 227,180),size));
+		fill(lerpColor(color(196, 182, 252,160),color(16, 0, 227,180),i/size));
+		rectMode(CORNER);
 	}
 	else if(s==3){
-		fill(lerpColor(color(114, 242, 230,140),color(0, 255, 94,160),size));
+		fill(lerpColor(color(114, 242, 230,140),color(0, 255, 94,160),i/size));
+		rectMode(CORNER);
 	}
 	else if(s==2){
-		fill(lerpColor(color(255, 160, 0,120),color(255, 0, 0,120),size));
+		fill(lerpColor(color(255, 160, 0,120),color(255, 0, 0,120),i/size));
+		rectMode(CORNER);
 	}
 	else if(s==1){
-		fill(lerpColor(color(255, 254, 0,100),color(220, 119, 0,100),size));
+		fill(lerpColor(color(255, 254, 0,100),color(220, 119, 0,100),i/size));
+		rectMode(CORNER);
 	}
-	push();
-	if(messy=="5")
-	{
+	}
 	polygon(centerwidth-xpoint,centerheight,size,4);
 	polygon(centerwidth-halfxapoint,centerheight,size,4);
 	polygon(centerwidth+halfxapoint,centerheight,size,4);
 	polygon(centerwidth+xpoint,centerheight,size,4);
-	}
-	else if(messy=="4")
-	{
-	polygon(centerwidth-xpoint,nameleftBottom[messy],size,4);
-	polygon(centerwidth-halfxapoint,centerheight,size,4);
-	polygon(centerwidth+halfxapoint,centerheight,size,4);
-	polygon(centerwidth+xpoint,centerheight,size,4);
-	}
-	if(messy=="3")
-	{
-	polygon(centerwidth-xpoint,nameleftBottom[messy],size,4);
-	polygon(centerwidth-halfxapoint,nameleftTop[messy],size,4);
-	polygon(centerwidth+halfxapoint,centerheight,size,4);
-	polygon(centerwidth+xpoint,centerheight,size,4);
-	}
-	if(messy=="2")
-	{
-	polygon(centerwidth-xpoint,nameleftBottom[messy],size,4);
-	polygon(centerwidth-halfxapoint,nameleftTop[messy],size,4);
-	polygon(centerwidth+halfxapoint,namerightBottom[messy],size,4);
-	polygon(centerwidth+xpoint,centerheight,size,4);
-	}
-	if(messy=="1")
-	{
-	polygon(centerwidth-xpoint,nameleftBottom[messy],size,4);
-	polygon(centerwidth-halfxapoint,nameleftTop[messy],size,4);
-	polygon(centerwidth+halfxapoint,namerightBottom[messy],size,4);
-	polygon(centerwidth+xpoint,namerightTop[messy],size,4);
-	}
 	pop();
 }
 function pizzacircle(){
 	var location=lInput.value();
-	var pizzanumber=pizzaInput.value();
+	var pizzanumber=5;
+	var messy=oInput.value();
 	var day=dInput.value();
 	var daycount;
 	if(day=="morning person")
@@ -340,6 +316,8 @@ function pizzacircle(){
 		{
 			if(location=="country")
 				{
+					if(messy=="5")
+						{
 				circle(centerwidth, centerheight-(i*pizzadistance), daycount); //top
 				circle(centerwidth-(i*pizzadistance), centerheight, daycount); //right
     			circle(centerwidth, centerheight+(i*pizzadistance), daycount); //bottom
@@ -348,10 +326,57 @@ function pizzacircle(){
 				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //left-top
 				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //right-bottom
 				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
+						}
+					else if(messy=="4")
+						{
+				circle(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i]); //top
+				circle(centerwidth-(i*pizzadistance), centerheight, daycount); //right
+    			circle(centerwidth, centerheight+(i*pizzadistance), daycount); //bottom
+    			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
+				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
+				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //left-top
+				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //right-bottom
+				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
+						}
+					else if(messy=="3")
+						{
+				circle(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i]); //top
+				circle(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i]); //right
+    			circle(centerwidth, centerheight+(i*pizzadistance), daycount); //bottom
+    			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
+				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
+				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i]); //left-top
+				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //right-bottom
+				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
+						}
+					else if(messy=="2")
+						{
+				circle(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i]); //top
+				circle(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i]); //right
+    			circle(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i]); //bottom
+    			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
+				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
+				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i]); //left-top
+				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i]); //right-bottom
+				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
+						}
+					else if(messy=="1")
+						{
+				circle(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i]); //top
+				circle(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i]); //right
+    			circle(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i]); //bottom
+    			circle(centerwidth+(i*pizzadistance), centerheight, namerightTop[i]); //left
+				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
+				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i]); //left-top
+				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i]); //right-bottom
+				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightTop[i]); //right-top
+						}
 				}
 			else if(location=="city")
 				{
 				points=4;
+					if(messy=="5")
+						{
 				polygon(centerwidth, centerheight-(i*pizzadistance), daycount, points); //top
 				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
@@ -360,10 +385,57 @@ function pizzacircle(){
 				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
 				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
 				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="4")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="3")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="2")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="1")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, namerightTop[i], points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightTop[i], points); //right-top
+						}
 				}
 			else if(location=="suburb")
 				{
 				points=6;
+					if(messy=="5")
+						{
 				polygon(centerwidth, centerheight-(i*pizzadistance), daycount, points); //top
 				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
@@ -372,11 +444,56 @@ function pizzacircle(){
 				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
 				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
 				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="4")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="3")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="2")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
+						}
+					else if(messy=="1")
+						{
+				polygon(centerwidth, centerheight-(i*pizzadistance), nameleftBottom[i], points); //top
+				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
+    			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
+    			polygon(centerwidth+(i*pizzadistance), centerheight, namerightTop[i], points); //left
+				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
+				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
+				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
+				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightTop[i], points); //right-top
+						}
 				}
 		}
 }
 function nameshape(){
-	var lastname=lnInput.value();
+	var lastname=nInput.value();
 	var lastnamecount=lastname.length;
 	var lastnametwo;
 	for (i=1; i<lastname.length; i++)
@@ -863,14 +980,13 @@ function nameshape(){
 		}
 	for(var j=0; j<=nameleftTop.length; j++)
 		{
-			if(j%2==0)
-				{
-					fill(monthColor2);
-				}
-			else
-			    {
-					fill(monthColor);
-			    }
+			noStroke();
+			if(j%2==0){
+				fill(monthColor2);
+			}
+			else{
+				fill(monthColor);
+			}
 			push();
 			polygon(nameleftTop[j],namerightTop[j], 100, lastnamecount);
 			polygon(namerightBottom[j],namerightTop[j], 100, lastnamecount);
@@ -881,7 +997,6 @@ function nameshape(){
 }
 function mood() {
     let time = dInput.value();
-    
     if (time == "morning person") {
         dayColor = 100;
     } else if (time == "night owl") {
@@ -902,8 +1017,10 @@ function proximity() {
 }
 
 function scales() {
-    var name = nInput.value();
+    var name = lnInput.value();
 	var namecont=name.length;
+	let pizzaval=pizzaInput.value();
+	let proximity=pizzaval*10;
     console.log('scales');
     stroke(0);
     fill(seasonColor);       
@@ -912,10 +1029,10 @@ function scales() {
         for (var j = 0; j < height+100; j+=50) {
             if (j%100 == 0) {
                let k = i+50;
-               polygon(k, j, 50, namecont);
+               polygon(k, j, proximity, namecont);
                }
                else {
-                    polygon(i, j, 50, namecont);
+                    polygon(i, j, proximity, namecont);
                 }
             }
         }
