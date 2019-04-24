@@ -520,7 +520,7 @@ function gradCircle(x, y, r, c1, c2) {
    noStroke();
    for (var i = 0; i <= lines; i++) {
      let inter = map(i, 0, r, 0, 0.8);
-     let c = lerpColor(c1, c2, inter);
+     let c = lerpColor(color(c1), color(c2), inter);
      fill(c);
      const s = i * lineW + lineW;
      const chordLength = Math.sqrt(2 * s * r - s * s) * 2;
