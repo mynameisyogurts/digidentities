@@ -478,23 +478,23 @@ function nameshape(){
 	var introvalue=iInput.value();
 	if(introvalue=="1")
 		{
-			size=10;
+			size=20;
 		}
 	else if(introvalue=="2")
 		{
-			size=20;
+			size=40;
 		}
 	else if(introvalue=="3")
 		{
-			size=30;
+			size=60;
 		}
 	else if(introvalue=="4")
 		{
-			size=40;
+			size=80;
 		}
 	else if(introvalue=="5")
 		{
-			size=50;
+			size=100;
 		}
 	var half;
 	var heighthalf
