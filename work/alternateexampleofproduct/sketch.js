@@ -213,7 +213,6 @@ function show() {
     }
     proximity();
     scales();
-	bigSquare();
 	mood();
 	nameshape();
 	pizzacircle();
@@ -293,6 +292,28 @@ function pizzacircle(){
 	var pizzanumber=5;
 	var messy=oInput.value();
 	var day=dInput.value();
+	var s=sInput.value();
+	var start
+	if(s=="5")
+		{
+			start=5;
+		}
+	else if(s=="4")
+		{
+			start=4;
+		}
+	else if(s=="3")
+		{
+			start=3;
+		}
+	else if(s=="2")
+		{
+			start=2;
+		}
+	else if(s=="1")
+		{
+			start=1;
+		}
 	var daycount;
 	if(day=="morning person")
 		{
@@ -312,7 +333,8 @@ function pizzacircle(){
 	var centerheight=height/2;
 	noFill();
 	stroke(255, 255, 255);
-	for(var i=0; i<=pizzanumber; i++)
+	strokeWeight(10);
+	for(var i=start; i<=pizzanumber; i++)
 		{
 			if(location=="country")
 				{
@@ -322,10 +344,6 @@ function pizzacircle(){
 				circle(centerwidth-(i*pizzadistance), centerheight, daycount); //right
     			circle(centerwidth, centerheight+(i*pizzadistance), daycount); //bottom
     			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
-				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //left-bottom
-				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //left-top
-				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //right-bottom
-				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
 						}
 					else if(messy=="4")
 						{
@@ -333,10 +351,6 @@ function pizzacircle(){
 				circle(centerwidth-(i*pizzadistance), centerheight, daycount); //right
     			circle(centerwidth, centerheight+(i*pizzadistance), daycount); //bottom
     			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
-				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
-				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //left-top
-				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //right-bottom
-				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
 						}
 					else if(messy=="3")
 						{
@@ -344,10 +358,6 @@ function pizzacircle(){
 				circle(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i]); //right
     			circle(centerwidth, centerheight+(i*pizzadistance), daycount); //bottom
     			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
-				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
-				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i]); //left-top
-				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount); //right-bottom
-				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
 						}
 					else if(messy=="2")
 						{
@@ -355,10 +365,6 @@ function pizzacircle(){
 				circle(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i]); //right
     			circle(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i]); //bottom
     			circle(centerwidth+(i*pizzadistance), centerheight, daycount); //left
-				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
-				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i]); //left-top
-				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i]); //right-bottom
-				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount); //right-top
 						}
 					else if(messy=="1")
 						{
@@ -366,10 +372,6 @@ function pizzacircle(){
 				circle(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i]); //right
     			circle(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i]); //bottom
     			circle(centerwidth+(i*pizzadistance), centerheight, namerightTop[i]); //left
-				circle(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i]); //left-bottom
-				circle(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i]); //left-top
-				circle(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i]); //right-bottom
-				circle(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightTop[i]); //right-top
 						}
 				}
 			else if(location=="city")
@@ -381,10 +383,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="4")
 						{
@@ -392,10 +390,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="3")
 						{
@@ -403,10 +397,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="2")
 						{
@@ -414,10 +404,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="1")
 						{
@@ -425,10 +411,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, namerightTop[i], points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightTop[i], points); //right-top
 						}
 				}
 			else if(location=="suburb")
@@ -440,10 +422,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="4")
 						{
@@ -451,10 +429,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, daycount, points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="3")
 						{
@@ -462,10 +436,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), daycount, points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), daycount, points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="2")
 						{
@@ -473,10 +443,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, daycount, points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), daycount, points); //right-top
 						}
 					else if(messy=="1")
 						{
@@ -484,10 +450,6 @@ function pizzacircle(){
 				polygon(centerwidth-(i*pizzadistance), centerheight, nameleftTop[i], points); //right
     			polygon(centerwidth, centerheight+(i*pizzadistance), namerightBottom[i], points); //bottom
     			polygon(centerwidth+(i*pizzadistance), centerheight, namerightTop[i], points); //left
-				polygon(centerwidth+(i*pizzadistance), centerheight+(i*pizzadistance), nameleftBottom[i], points); //left-bottom
-				polygon(centerwidth+(i*pizzadistance), centerheight-(i*pizzadistance), nameleftTop[i], points); //left-top
-				polygon(centerwidth-(i*pizzadistance), centerheight+(i*pizzadistance), namerightBottom[i], points); //right-bottom
-				polygon(centerwidth-(i*pizzadistance), centerheight-(i*pizzadistance), namerightTop[i], points); //right-top
 						}
 				}
 		}
@@ -501,6 +463,27 @@ function nameshape(){
 			lastnametwo=lastnametwo+lastname.charAt(i);
 		}
 	lastnametwo=lastnametwo+lastname.charAt(0);
+	var introvalue=iInput.value();
+	if(introvalue=="1")
+		{
+			size=10;
+		}
+	else if(introvalue=="2")
+		{
+			size=20;
+		}
+	else if(introvalue=="3")
+		{
+			size=30;
+		}
+	else if(introvalue=="4")
+		{
+			size=40;
+		}
+	else if(introvalue=="5")
+		{
+			size=50;
+		}
 	var half;
 	var heighthalf
 	var fraction;
@@ -988,10 +971,10 @@ function nameshape(){
 				fill(monthColor);
 			}
 			push();
-			polygon(nameleftTop[j],namerightTop[j], 100, lastnamecount);
-			polygon(namerightBottom[j],namerightTop[j], 100, lastnamecount);
-			polygon(nameleftTop[j],nameleftBottom[j], 100, lastnamecount);
-			polygon(namerightBottom[j],nameleftBottom[j], 100,lastnamecount);
+			polygon(nameleftTop[j],namerightTop[j], size, lastnamecount);
+			polygon(namerightBottom[j],namerightTop[j], size, lastnamecount);
+			polygon(nameleftTop[j],nameleftBottom[j], size, lastnamecount);
+			polygon(namerightBottom[j],nameleftBottom[j], size,lastnamecount);
 			pop();
 		}
 }
@@ -1020,13 +1003,23 @@ function scales() {
     var name = lnInput.value();
 	var namecont=name.length;
 	let pizzaval=pizzaInput.value();
+	let answer = pInput.value();
+    var space;
+    if (answer == "cats") {
+        space = 100;
+    } else if (answer == "dogs") {
+        space = 25;
+    } else if (answer == "both" || answer == "neither") {
+        space = 50;
+    }
 	let proximity=pizzaval*10;
     console.log('scales');
-    stroke(0);
+	stroke(0);
+    strokeWeight(1);
     fill(seasonColor);       
     push();
     for (var i = 0; i < width; i+=50) {
-        for (var j = 0; j < height+100; j+=50) {
+        for (var j = 0; j < height+100; j+=space) {
             if (j%100 == 0) {
                let k = i+50;
                polygon(k, j, proximity, namecont);
