@@ -333,8 +333,20 @@ function pizzacircle(){
 	var centerheight=height/2;
 	noFill();
 	stroke(255, 255, 255);
-	strokeWeight(10);
-	for(var i=start; i<=pizzanumber; i++)
+	strokeWeight(5);
+	var begin;
+	var end;
+	if(start<=pizzanumber)
+		{
+			begin=start;
+			end=pizzanumber;
+		}
+	else if(pizzanumber<start)
+		{
+			begin=pizzanumber;
+			end=start;
+		}
+	for(var i=begin; i<=end; i++)
 		{
 			if(location=="country")
 				{
@@ -964,20 +976,30 @@ function nameshape(){
 	for(var j=0; j<=nameleftTop.length; j++)
 		{
 			noStroke();
-			if(j%2==0){
-				fill(monthColor2);
-			}
-			else{
-				fill(monthColor);
-			}
 			push();
-			polygon(nameleftTop[j],namerightTop[j], size, lastnamecount);
-			polygon(namerightBottom[j],namerightTop[j], size, lastnamecount);
-			polygon(nameleftTop[j],nameleftBottom[j], size, lastnamecount);
-			polygon(namerightBottom[j],nameleftBottom[j], size,lastnamecount);
+			gradCircle(nameleftTop[j],namerightTop[j],size,monthColor,monthColor2);
+			gradCircle(namerightBottom[j],namerightTop[j],size,monthColor,monthColor2);
+			gradCircle(nameleftTop[j],nameleftBottom[j],size,monthColor,monthColor2);
+			gradCircle(namerightBottom[j],nameleftBottom[j],size,monthColor,monthColor2);
 			pop();
 		}
 }
+gradCircle = function(x, y, r, c1, c2) {
+  const lineW = 1;
+  const lines = (r * 2) / lineW;
+
+  noStroke();
+  for (var i = 0; i <= lines; i++) {
+    let inter = map(i, 0, r, 0, 0.8);
+    let c = lerpColor(color(c1), color(c2), inter);
+    fill(c);
+    const s = i * lineW + lineW;
+    const chordLength = Math.sqrt(2 * s * r - s * s) * 2;
+  	push();
+    rect(i * lineW + x, r - chordLength / 2 + y, lineW, chordLength);
+  	pop();
+  }
+};
 function mood() {
     let time = dInput.value();
     if (time == "morning person") {
